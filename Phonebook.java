@@ -3,7 +3,8 @@
  * Instructor: Entrekin
  * Date: 2 November 2017 -WIP
  * Assignment: Assignment11
- * Purpose: Creates a phonebook
+ * Purpose: Creates a phonebook full of the entries entered by 
+ * the user, stores and reads from a file
  */
 import java.io.FileNotFoundException;
 import java.io.File;
@@ -16,6 +17,11 @@ public class Phonebook {
 	private Entry[] entries;
 	private int count;
 
+	/**
+	 * Constructor for phone book.
+	 * @param csvFileName The filename that the user wants to read from
+	 * @throws FileNotFoundException
+	 */
 	public Phonebook(String csvFileName) throws FileNotFoundException {
 		count = 0;
 		Scanner reader = new Scanner(new File(csvFileName));
@@ -27,6 +33,11 @@ public class Phonebook {
 		}
 	}
 
+	/**
+	 * Saves the phonebook to a file
+	 * @param filename The filename that the user wants to save the phonebook as
+	 * @throws IOException
+	 */
 	public void saveAs(String filename) throws IOException {
 		FileWriter out = new FileWriter(new File(filename));
 		for (Entry x : entries) {
@@ -34,6 +45,10 @@ public class Phonebook {
 		}
 	}
 
+	/**
+	 * Checks if the phone boook is sorted
+	 * @return Whether or not the phonebook is sorted.
+	 */
 	public boolean isSorted() {
 		for (int i = 1; i < entries.length - 1; i++) {
 			if (entries[i].compareTo(entries[i + 1]) == -1)
@@ -44,6 +59,9 @@ public class Phonebook {
 		return true;
 	}
 
+	/**
+	 * Sorts the phone book with a bubble sort
+	 */
 	public void bubbleSort() {
 		for (Entry x : entries) {
 			for (int i = 0; i < entries.length - 1; i++) {
@@ -56,6 +74,21 @@ public class Phonebook {
 			}
 		}
 	}
+	/*
+	 * wasSwapped = true;
+	 * for(int i=0; i < array.length; i++){
+	 * 		for(int j = 0; j < array.length-1-i;j++){
+	 * 			if(array[j] > array[j+1]{
+	 * 				wasSwapped = true;
+	 * 				temp = array[j];
+	 * 				array[j] = array[j+1];
+	 * 			}
+	 * 			else
+	 * 				wasSwapped = false;
+	 * 		}
+	 * 80,17,100,-5,3,25,34,40
+	 * }
+	 */
 
 	public static void main(String[] args) {
 		if(args.length == 0){
@@ -76,10 +109,17 @@ public class Phonebook {
 		
 	}
 
+	/**
+	 * Checks if the phone book is full
+	 * @return True if the phonebook is full, false otherwise
+	 */
 	private boolean isFull() {
-
+		if()
 	}
 
+	/**
+	 * Changes the size of the array to allow for more entries
+	 */
 	private void reallocate() {
 
 	}
