@@ -19,6 +19,8 @@ public class LifeTester {
 			newGame.fillBoard(read);
 			in.close();
 			newGame.playgame();
+			System.out.println("Done!");
+			newGame.playgame();
 
 		} catch (FileNotFoundException e) {
 			System.out.println("File not found!");

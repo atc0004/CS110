@@ -127,9 +127,10 @@ public class Life {
 	}
 
 	public void playgame() throws InterruptedException {
-		private boolean flag = false;
-		for (int generation = 0; generation < 100; generation++) {//Change to a While loop while loop to check if any changes were made
-		
+		boolean change = true;
+		//for (int generation = 0; generation < 100; generation++) {//Change to a While loop while loop to check if any changes were made
+		while(change){
+			change = false;
 			int neighbors = 0;
 			for (int row = 0; row < theBoard.length - 1; row++) {
 				//System.out.println("First for");
@@ -137,22 +138,26 @@ public class Life {
 					neighbors = countNeighbors(row, col);
 					if (neighbors == 3 && !isOccupied(row, col)) {
 						setBorn(row, col);
+						change = true;
 					} else if (neighbors >= 4 && isOccupied(row, col)) {
 						setDying(row, col);
+						change = true;
 					} else if (neighbors <= 1 && isOccupied(row, col)) {
 						setDying(row, col);
+						change = true;
 					}
 				}
 			}
-			System.out.println("Generation:" + (generation+1));
+			//System.out.println("Generation:" + (generation+1));
 			nextGeneration();
 			drawBoard();
+			Thread.sleep(500);
 		}
 	}
 
 	private void nextGeneration() {
 		//System.out.println("Generating");
-		StdDraw.show(100);
+		//StdDraw.show(100);
 		StdDraw.clear();
 		for (int y = 0; y < theBoard.length; y++) {
 			for (int x = 0; x < theBoard[y].length; x++) {
